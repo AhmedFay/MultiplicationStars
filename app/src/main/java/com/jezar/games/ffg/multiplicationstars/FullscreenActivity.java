@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.jezar.games.ffg.multiplicationstars.Fragment.LoadingFragment;
 import com.jezar.games.ffg.multiplicationstars.Fragment.MainFragment;
@@ -46,6 +47,7 @@ public class FullscreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fullscreen);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         mContentView = findViewById(R.id.fullscreen_content);
 
@@ -57,7 +59,7 @@ public class FullscreenActivity extends AppCompatActivity {
             public void run() {
                 getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit).replace(R.id.fullscreen_content, new MainFragment()).commit();
             }
-        }, 10000);
+        }, 5000);
 
     }
 

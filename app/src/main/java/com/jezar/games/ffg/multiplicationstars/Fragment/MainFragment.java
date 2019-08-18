@@ -32,26 +32,28 @@ public class MainFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
 
         Button btnStart = root.findViewById(R.id.btnStart);
+        Button btnOpenServer = root.findViewById(R.id.btnOpenServer);
+
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), GameActivity.class);
                 getActivity().startActivity(intent);
-                getActivity().finish();
             }
         });
 
-        Button btnExt = root.findViewById(R.id.btnExt);
-        btnExt.setOnClickListener(new View.OnClickListener() {
+        btnOpenServer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-                homeIntent.addCategory(Intent.CATEGORY_HOME);
-                homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                getActivity().startActivity(homeIntent);
-                getActivity().finish();
+
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fullscreen_content, new HostFragment())
+                        .commit();
+
             }
         });
+
 
         return root;
     }

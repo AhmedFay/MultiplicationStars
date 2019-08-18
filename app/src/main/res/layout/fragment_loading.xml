@@ -16,8 +16,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
             android:text="دوري ابطال الضرب"
-            android:textSize="25sp"
-            android:fontFamily="@font/moga"/>
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
         <ProgressBar
             android:id="@+id/progressBar"

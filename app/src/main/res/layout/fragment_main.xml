@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/entry_bg"
+    android:background="@drawable/football_background"
     tools:context=".Fragment.MainFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -21,34 +21,54 @@
             android:text="@string/hello_blank_fragment"
             android:textColor="#FFF"
             android:textSize="35sp"
-
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnStart"
-            android:layout_width="200dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/custom_button"
             android:shadowColor="#FFFFFF"
             android:shadowDx="0"
             android:shadowDy="0"
             android:shadowRadius="5"
-            android:text="بدء اللعبة"
+            android:text="بدء اللعب فردي"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btnExt"
+            android:id="@+id/btnOpenServer"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/custom_button"
-            android:text="خروج"
+            android:shadowColor="#FFFFFF"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text="انشاء سيرفر"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnJoinServer"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/custom_button"
+            android:shadowColor="#FFFFFF"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text="انضمام الى سيرفر"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
 </FrameLayout>
