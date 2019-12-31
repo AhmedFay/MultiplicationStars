@@ -33,6 +33,7 @@ public class MainFragment extends Fragment {
 
         Button btnStart = root.findViewById(R.id.btnStart);
         Button btnOpenServer = root.findViewById(R.id.btnOpenServer);
+        Button btnJoinServer = root.findViewById(R.id.btnJoinServer);
 
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,11 +50,24 @@ public class MainFragment extends Fragment {
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fullscreen_content, new HostFragment())
+                        .addToBackStack(null)
                         .commit();
 
             }
         });
 
+        btnJoinServer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fullscreen_content, new JoinFragment())
+                        .addToBackStack(null)
+                        .commit();
+
+            }
+        });
 
         return root;
     }

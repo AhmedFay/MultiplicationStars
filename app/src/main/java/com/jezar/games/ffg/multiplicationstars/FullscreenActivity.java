@@ -5,11 +5,14 @@ import android.annotation.SuppressLint;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.jezar.games.ffg.multiplicationstars.Fragment.LoadingFragment;
 import com.jezar.games.ffg.multiplicationstars.Fragment.MainFragment;
@@ -51,13 +54,20 @@ public class FullscreenActivity extends AppCompatActivity {
 
         mContentView = findViewById(R.id.fullscreen_content);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fullscreen_content, new LoadingFragment()).commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fullscreen_content, new LoadingFragment())
+                .commit();
 
         Handler h = new Handler();
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
-                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit).replace(R.id.fullscreen_content, new MainFragment()).commit();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
+                        .replace(R.id.fullscreen_content, new MainFragment())
+                        .commit();
             }
         }, 5000);
 
@@ -81,4 +91,28 @@ public class FullscreenActivity extends AppCompatActivity {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
+
+    boolean doubleBackToExitPressedOnce = false;
+
+    @Override
+    public void onBackPressed() {
+
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        } else {
+
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to return", Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+        }
+    }
+
 }
